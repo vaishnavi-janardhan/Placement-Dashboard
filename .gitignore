@@ -115,11 +115,11 @@ dmypy.json
 .pyre/
 
 # Latex files
-.aux
-.log
-.nav
-.out
-.pdf
-.snm
-.gz
-.toc
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.gz
+*.toc
