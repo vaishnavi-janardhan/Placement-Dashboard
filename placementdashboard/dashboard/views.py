@@ -31,7 +31,7 @@ def user_login(request):
                 return HttpResponseRedirect("Your account was inactive")
         else:
             print("Someone tried to login and failed.")
-            print("They used username : {username} and password : {}".format(username,password))
+            print("They used username : {} and password : {}".format(username, password))
             return HttpResponse("Invalid login details given")
     else:
         return render(request, 'dashboard/login.html', {})       

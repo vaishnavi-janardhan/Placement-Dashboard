@@ -11,3 +11,18 @@ class UserProfileInfo(models.Model):
     
     def __str__(self):
         return self.user.username
+
+class Trainee(models.Model):
+    id = models.BigIntegerField(unique = True)
+    address = models.TextField()
+    city = models.TextField()
+    crmid = models.TextField()
+    description = models.TextField()
+    name = models.TextField()
+    website = models.TextField()
+    logoUrl = models.TextField()
+    noOfEmployees = models.TextField(default = None)
+    sector = models.TextField(default = None)
+
+    def __str__(self):
+        return self.id
