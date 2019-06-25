@@ -14,9 +14,7 @@
     <!-- Login Form -->
     <form method="post" action="{% url 'dashboard:user_login' %}">
                 {% csrf_token %}
-      <label for="username">Username:</label>
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-      <label for="password">Password:</label>
       <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
 
       <input type="submit" class="fadeIn fourth" value="Log In">
