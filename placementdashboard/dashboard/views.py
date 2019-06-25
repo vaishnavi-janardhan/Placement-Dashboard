@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from dashboard.forms import UserForm, UserProfileInfoForm 
 
+from dashboard.models import PmaPartner
+
 
 def index(request):
     return render(request, 'dashboard/index.html')
