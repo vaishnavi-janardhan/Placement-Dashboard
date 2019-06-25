@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = [
+    "/Placement-dashboard/static",
+]
+
+
 
 # Application definition
 
