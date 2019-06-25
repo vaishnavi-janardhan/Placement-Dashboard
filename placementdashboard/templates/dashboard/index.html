@@ -4,6 +4,11 @@
 <div class = "container">
     <div class = "jumbotron">
         <h1> Welcome to the Placements Dashboard! </h1>
+        <ul>
+        {% for partner in partners %}
+            <li>{{ partner.name }}</li>
+        {% endfor %}
+        </ul>
         {% if user.is_authenticated %}
         <h2>Hello {{ user.username }}</h2>
         {% endif %}

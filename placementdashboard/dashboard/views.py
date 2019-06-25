@@ -7,9 +7,9 @@ from dashboard.forms import UserForm, UserProfileInfoForm
 
 from dashboard.models import PmaPartner
 
-
 def index(request):
-    return render(request, 'dashboard/index.html')
+    partners = PmaPartner.objects.all()
+    return render(request, 'dashboard/index.html', {'partners': partners})
 
 @login_required
 def special(request):
