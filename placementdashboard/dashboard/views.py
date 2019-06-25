@@ -5,11 +5,11 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from dashboard.forms import UserForm, UserProfileInfoForm 
 
-from dashboard.models import PmaPartner
+from dashboard.models import PmaDemand
 
 def index(request):
-    partners = PmaPartner.objects.all()
-    return render(request, 'dashboard/index.html', {'partners': partners})
+    demands = PmaDemand.objects.all()
+    return render(request, 'dashboard/index.html', {'demands': demands})
 
 @login_required
 def special(request):

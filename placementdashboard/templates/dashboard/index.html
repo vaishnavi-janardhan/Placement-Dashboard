@@ -5,8 +5,24 @@
     <div class = "jumbotron">
         <h1> Welcome to the Placements Dashboard! </h1>
         <ul>
-        {% for partner in partners %}
-            <li>{{ partner.name }}</li>
+        {% for demand in demands %}
+            <li>
+                {{ demand.id}}
+                {{demand.created}}
+                {{demand.skills}} 
+                {{demand.jobtitle}}
+                {{demand.gender}}
+                {{demand.certification}}
+                {{demand.markspg}} 
+                {{demand.marks_ug}}
+                {{demand.marks10}}
+                {{demand.numberofpositions}} 
+                {{demand.bonddetails}} 
+                {{demand.bondduration}}
+                {{demand.compensation}} 
+                {{demand.location}}
+                {{demand.constraintlocation}}
+            </li>
         {% endfor %}
         </ul>
         {% if user.is_authenticated %}
