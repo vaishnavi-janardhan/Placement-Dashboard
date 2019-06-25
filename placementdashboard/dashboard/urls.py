@@ -7,4 +7,5 @@ app_name = 'Placement Dashboard'
 urlpatterns = [
     path('', views.index, name='index'),
     url(r'^user_login/$',views.user_login,name='user_login'),
+    url('csv', views.getfile, name = 'download_csv')
 ]
