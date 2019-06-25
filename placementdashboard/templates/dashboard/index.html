@@ -4,48 +4,50 @@
 <div class = "container">
     <div class = "jumbotron">
         <h1> Welcome to the Placements Dashboard! </h1>
-        <table class="table">
-            <tr>
-                <th>Sl No</th>
-                <th>Date of requirement</th>
-                <!--<th>Partner</th>-->
-                <!--<th>Skills</th>-->
-                <th>Job Title</th>
-                <th>Gender</th>
-                <th>Certification required</th>
-                <th>Year of last graduation</th>
-                <th>Marks PG</th>
-                <th>Marks UG</th>
-                <th>Marks 12th</th>
-                <th>Marks 10th</th>
-                <th>Number of positions</th>
-                <th>Bond Details</th>
-                <th>Bond Duration</th>
-                <th>Compensation</th>
-                <th>Location</th>
-                <th>Constraint Location</th>
-            </tr>
-            {% for demand in demands %}
-            <tr>
-                <td>{{demand.id}}</td>
-                <td>{{demand.enddate}}</td>
-                <td>{{demand.jobtitile}}</td>
-                <td>{{demand.gender}}</td>
-                <td>{{demand.certification}}</td>
-                <td>{{demand.lastgradyear}}</td>
-                <td>{{demand.markspg}}</td>
-                <td>{{demand.marksug}}</td>
-                <td>{{demand.marks12}}</td>
-                <td>{{demand.marks10}}</td>
-                <td>{{demand.numberofpositions}}</td>
-                <td>{{demand.bonddetails}}</td>
-                <td>{{demand.bondduration}}</td>
-                <td>{{demand.compensation}}</td>
-                <td>{{demand.location}}</td>
-                <td>{{demand.constraintlocation}}</td>
-            </tr>
-            {% endfor %}
-        </table>        
+        <<div class="container">
+            <table class="table">
+                <tr>
+                    <th>Sl No</th>
+                    <th>Date of requirement</th>
+                    <!--<th>Partner</th>-->
+                    <!--<th>Skills</th>-->
+                    <th>Job Title</th>
+                    <th>Gender</th>
+                    <th>Certification required</th>
+                    <th>Year of last graduation</th>
+                    <th>Marks PG</th>
+                    <th>Marks UG</th>
+                    <th>Marks 12th</th>
+                    <th>Marks 10th</th>
+                    <th>Number of positions</th>
+                    <th>Bond Details</th>
+                    <th>Bond Duration</th>
+                    <th>Compensation</th>
+                    <th>Location</th>
+                    <th>Constraint Location</th>
+                </tr>
+                {% for demand in demands %}
+                <tr>
+                    <td>{{demand.id}}</td>
+                    <td>{{demand.enddate}}</td>
+                    <td>{{demand.jobtitle}}</td>
+                    <td>{{demand.gender}}</td>
+                    <td>{{demand.certification}}</td>
+                    <td>{{demand.lastgradyear}}</td>
+                    <td>{{demand.markspg}}</td>
+                    <td>{{demand.marksug}}</td>
+                    <td>{{demand.marks12}}</td>
+                    <td>{{demand.marks10}}</td>
+                    <td>{{demand.numberofpositions}}</td>
+                    <td>{{demand.bonddetails}}</td>
+                    <td>{{demand.bondduration}}</td>
+                    <td>{{demand.compensation}}</td>
+                    <td>{{demand.location}}</td>
+                    <td>{{demand.constraintlocation}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>        
         {% if user.is_authenticated %}
         <h2>Hello {{ user.username }}</h2>
         {% endif %}

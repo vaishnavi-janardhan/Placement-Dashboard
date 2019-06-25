@@ -1,0 +1,12 @@
+.container{
+    height: 400px;
+    width: 70%;
+    margin: 50px;
+    background-color: lightcoral;
+    display: flex;
+    flex-wrap: wrap; /*or wrap-reverse*/
+    flex-direction: row; /* or row, or column, or column-reverse*/
+    justify-content: stretch; /*for horizontal aligning*/
+    align-items: center;
+    align-content: space-between; /* for vertical aligning*/
+}
