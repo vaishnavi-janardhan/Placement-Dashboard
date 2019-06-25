@@ -1,16 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from dashboard.forms import UserForm, UserProfileInfoForm 
 
 from dashboard.models import PmaDemand
+from dashboard.models import PmaPartner
 import csv
 from django.utils.encoding import smart_str
 
 def index(request):
-    demands = PmaDemand.objects.all()
+    demands = PmaDemand.objects.select_related("partner_fk")
+    print (demands)
+    return JsonResponse({})
     return render(request, 'dashboard/index.html', {'demands': demands})
 
 def getfile(request):

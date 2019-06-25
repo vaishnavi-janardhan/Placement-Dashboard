@@ -5,13 +5,13 @@
     <div class = "jumbotron jumbotron-fluid">
         <h1> Welcome to the Placements Dashboard! </h1>
     </div>
-    <a href="{% url 'dashboard:download_csv' %}" download>CSV flile</a>
+    <a href="{% url 'dashboard:download_csv' %}" download>CSV file</a>
     <div class="jumbotron jumbotron-fluid">
             <table class="table">
                 <tr>
                     <th>Sl No</th>
                     <th>Date of requirement</th>
-                    <!--<th>Partner</th>-->
+                    <th>Partner</th>
                     <!--<th>Skills</th>-->
                     <th>Job Title</th>
                     <th>Gender</th>
@@ -31,7 +31,8 @@
                 {% for demand in demands %}
                 <tr>
                     <td>{{demand.id}}</td>
-                    <td>{{demand.enddate}}</td>
+                    <td>{{demand.enddate|date:"d M Y"}}</td>
+                    <td>{{demand.partner_fk.name}}
                     <td>{{demand.jobtitle}}</td>
                     <td>{{demand.gender}}</td>
                     <td>{{demand.certification}}</td>

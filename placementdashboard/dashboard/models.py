@@ -172,6 +172,22 @@ class PmaContact(models.Model):
         managed = False
         db_table = 'pma_contact'
 
+class PmaPartner(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=20)
+    crmid = models.CharField(unique=True, max_length=50)
+    description = models.TextField()
+    name = models.CharField(max_length=200)
+    website = models.CharField(max_length=100)
+    logourl = models.TextField(db_column='logoUrl', blank=True, null=True)  # Field name made lowercase.
+    noofemployees = models.CharField(db_column='noOfEmployees', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    sector = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pma_partner'        
+
 
 class PmaDemand(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -194,7 +210,7 @@ class PmaDemand(models.Model):
     numberofpositions = models.IntegerField(db_column='numberOfPositions', blank=True, null=True)  # Field name made lowercase.
     specialconditions = models.CharField(db_column='specialConditions', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     contact_fk = models.BigIntegerField()
-    partner_fk = models.BigIntegerField()
+    partner_fk = models.ForeignKey(PmaPartner, on_delete = models.CASCADE)
     constraintlocation = models.CharField(db_column='constraintLocation', max_length=255)  # Field name made lowercase.
     jobdescription = models.CharField(db_column='jobDescription', max_length=3000, blank=True, null=True)  # Field name made lowercase.
     aptitudegrade = models.FloatField(db_column='aptitudeGrade')  # Field name made lowercase.
@@ -269,23 +285,6 @@ class PmaOffer(models.Model):
         managed = False
         db_table = 'pma_offer'
         unique_together = (('status', 'drive_fk', 'trainee_fk'),)
-
-
-class PmaPartner(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    address = models.CharField(max_length=200)
-    city = models.CharField(max_length=20)
-    crmid = models.CharField(unique=True, max_length=50)
-    description = models.TextField()
-    name = models.CharField(max_length=200)
-    website = models.CharField(max_length=100)
-    logourl = models.TextField(db_column='logoUrl', blank=True, null=True)  # Field name made lowercase.
-    noofemployees = models.CharField(db_column='noOfEmployees', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    sector = models.CharField(max_length=50, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'pma_partner'
 
 
 class PmaPlacementCredits(models.Model):
