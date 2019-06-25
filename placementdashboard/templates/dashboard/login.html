@@ -8,14 +8,14 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="https://www.talentsprint.com/misc/TS-Website/images/logo.png" id="icon" alt="User Icon" />
+      <img src="https://www.talentsprint.com/misc/TS-Website/images/logo.png" id="icon" alt="Icon" />
     </div>
 
     <!-- Login Form -->
     <form method="post" action="{% url 'dashboard:user_login' %}">
                 {% csrf_token %}
       <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
 
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
