@@ -2,6 +2,24 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Requirements(models.Model):
+    sno = models.IntegerField()
+    date = models.DateField()
+    partnerName = models.CharField()
+    jobTitle = models.CharField()
+    gender = models.CharField()
+    certification = models.CharField()
+    yearLastGrad = models.CharField()
+    marksPG = models.IntegerField()
+    marksUG = models.IntegerField()
+    marks10 = models.IntegerField()
+    marks12 = models.IntegerField()
+    numberOfPos = models.IntegerField()
+    bondDetails = models.CharField()
+    bondDuration = models.CharField()  
+    compensation = models.CharField()
+    workLocation = models.CharField()
+    constraintLocation = models.CharField()
 
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)

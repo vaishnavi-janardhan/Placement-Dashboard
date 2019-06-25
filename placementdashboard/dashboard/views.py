@@ -4,17 +4,19 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from dashboard.forms import UserForm, UserProfileInfoForm 
-
+from dashboard.models import Requirements
 from dashboard.models import PmaDemand
 from dashboard.models import PmaPartner
 import csv
 from django.utils.encoding import smart_str
 
 def index(request):
-    demands = PmaDemand.objects.select_related("partner_fk")
-    print (demands)
-    return JsonResponse({})
-    return render(request, 'dashboard/index.html', {'demands': demands})
+    requirements = Requirements.objects.raw(
+        'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, compensation, d.location, constraintLocation from pma_demand as d INNER JOIN pma_partner as p on partner_fk = p.id;'         
+    )
+    
+    print (requirements)
+    return render(request, 'dashboard/index.html', {'requirements': requirements})
 
 def getfile(request):
     response = HttpResponse(content_type='text/csv')
