@@ -42,8 +42,8 @@
     max-width: 450px;
     position: relative;
     padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
     text-align: center;
   }
   
@@ -107,7 +107,7 @@
     transform: scale(0.95);
   }
   
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], .date{
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -128,16 +128,18 @@
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus, input[type=password]:focus {
+  input[type=text]:focus, input[type=password]:focus, .date:focus{
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
   
-  input[type=text]:placeholder, input[type=password]:placeholder {
+  input[type=text]:placeholder, input[type=password]:placeholder, .date:placeholder{
     color: #cccccc;
   }
   
-  
+  .date {
+    width: 50vw;
+  }
 
   /* .wrapper {
     text-align: center;
@@ -146,7 +148,7 @@
   /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */
-  .fadeInDown {
+  /* .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
@@ -180,9 +182,9 @@
       transform: none;
     }
   }
-  
+   */
   /* Simple CSS3 Fade-in Animation */
-  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  /* @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   
@@ -224,9 +226,9 @@
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
+   */
   /* Simple CSS3 Fade-in Animation */
-  .underlineHover:after {
+  /* .underlineHover:after {
     display: block;
     left: 0;
     bottom: -10px;
@@ -244,7 +246,7 @@
   .underlineHover:hover:after{
     width: 100%;
   }
-  
+   */
   
   
   /* OTHERS */

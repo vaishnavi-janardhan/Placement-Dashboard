@@ -7,13 +7,18 @@
   </div>
 </div>
 
-  <form method="post" >
+<div class="wrapper">
+<form method="post" action="{% url 'dashboard:download_csv' %}" download>
                 {% csrf_token %}
-      <input type="date" id="startDate" class="fadeIn second" name="startDate" placeholder="Enter start date" required>
-      <input type="date" id="endDate" class="fadeIn third" name="endDate" placeholder="Enter end date" required>
-
+      <p>Enter start date: </p> <input class = "date" type="date" id="startDate" class="fadeIn second" name="startDate" placeholder="Enter start date" required>
+      <br>
+      <p>Enter end date: </p>
+      <input class="date" type="date" id="endDate" class="fadeIn third" name="endDate" placeholder="Enter end date" required>
+      <br>
+      <div class="wrapper">
       <input type="submit" class="fadeIn fourth" value="Generate report">
-
-    <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a>
-
+      </div>
+    <!-- <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a> -->
+  </form>
+  </div>  
 {% endblock %} 

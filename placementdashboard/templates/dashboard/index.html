@@ -1,17 +1,17 @@
 {% extends "dashboard/base.html" %}
 {% block body_block %}
 {% if user.is_authenticated %}
-<div class = "container">
-    
-    <div class = "jumbotron jumbotron-fluid">
+<div class="container">
+
+    <div class="jumbotron jumbotron-fluid">
         <h1> Welcome to the Placements Dashboard </h1>
     </div>
-    <div class = "wrapper">
-        
-        <h2 id = "welcome">Hello {{ user.username }}</h2>
+    <div class="wrapper">
 
-    
-    <a class = "button" href="{% url 'requirements' %}" requirements> Requirements </a>
+        <h2 id="welcome">Hello {{ user.username }}</h2>
+
+
+        <a class="button" href="{% url 'requirements' %}" requirements> Requirements </a>
     </div>
     <!--<div class="jumbotron jumbotron-fluid">
             <table class="table">
@@ -57,8 +57,8 @@
                 </tr>
                 {% endfor %}
             </table> -->
-            {% else %}
-            <meta http-equiv="Refresh" content="0; url= login">
-            {% endif %}
+    {% else %}
+    <meta http-equiv="Refresh" content="0; url= login">
+    {% endif %}
 
-{% endblock %}
+    {% endblock %}
