@@ -1,16 +1,16 @@
 {% extends "dashboard/base.html" %}
 {% block body_block %}
-
+{% if user.is_authenticated %}
 <div class = "container">
     <div class = "jumbotron jumbotron-fluid">
         <h1> Welcome to the Placements Dashboard! </h1>
     </div>
     </div>
-        {% if user.is_authenticated %}
+        
         <h2>Hello {{ user.username }}</h2>
-        {% endif %}
+        
     </div>
-    <a class = "button" href="{% url 'dashboard:download_csv' %}" download>CSV file</a>
+    <button class = "btn btn-primary" href="{% url 'dashboard:download_csv' %}" download> CSV file
     <div class="jumbotron jumbotron-fluid">
             <table class="table">
                 <tr>
@@ -55,5 +55,5 @@
                 </tr>
                 {% endfor %}
             </table>
-    
+    {% endif %}
 {% endblock %}
