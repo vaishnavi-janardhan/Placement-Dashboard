@@ -21,7 +21,8 @@ from dashboard import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    url(r'^$',views.index,name='index'),
+    url(r'^login$',views.user_login,name='user_login'),
+    url(r'^index$',views.index,name='index'),
     url(r'^special/',views.special,name='special'),
     url(r'^dashboard/',include('dashboard.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),

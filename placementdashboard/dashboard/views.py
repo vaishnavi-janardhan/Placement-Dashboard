@@ -11,12 +11,16 @@ import csv
 from django.utils.encoding import smart_str
 
 def index(request):
+    startdate = '2018/11/01'
+    enddate = '2018/12/31'
     requirements = Requirements.objects.raw(
-        'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, compensation, d.location, constraintLocation from pma_demand as d INNER JOIN pma_partner as p on partner_fk = p.id;'         
-    ) 
-    for req in requirements:
-        print(req.id)
-    return render(request, 'dashboard/index.html', {'requirements': requirements})
+            'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, '
+            'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
+            'compensation, d.location, constraintLocation from pma_demand as d '
+            'INNER JOIN pma_partner as p on partner_fk = p.id WHERE created BETWEEN \'' +
+            startdate + ' \' AND \'' + enddate + '\';'      
+    )    
+    return render(request, 'dashboard/index.html', {'requirements': requirements})   
 
 def getfile(request):
     response = HttpResponse(content_type='text/csv')
@@ -74,7 +78,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('user_login'))
 
 def user_login(request):
     if request.method == 'POST':
