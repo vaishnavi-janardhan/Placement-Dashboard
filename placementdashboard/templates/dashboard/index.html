@@ -5,7 +5,12 @@
     <div class = "jumbotron jumbotron-fluid">
         <h1> Welcome to the Placements Dashboard! </h1>
     </div>
-    <a href="{% url 'dashboard:download_csv' %}" download>CSV file</a>
+    </div>
+        {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+        {% endif %}
+    </div>
+    <a class = "button" href="{% url 'dashboard:download_csv' %}" download>CSV file</a>
     <div class="jumbotron jumbotron-fluid">
             <table class="table">
                 <tr>
@@ -28,31 +33,27 @@
                     <th>Location</th>
                     <th>Constraint Location</th>
                 </tr>
-                {% for demand in demands %}
+                {% for req in requirements %}
                 <tr>
-                    <td>{{demand.id}}</td>
-                    <td>{{demand.enddate|date:"d M Y"}}</td>
-                    <td>{{demand.partner_fk.name}}
-                    <td>{{demand.jobtitle}}</td>
-                    <td>{{demand.gender}}</td>
-                    <td>{{demand.certification}}</td>
-                    <td>{{demand.lastgradyear}}</td>
-                    <td>{{demand.markspg}}</td>
-                    <td>{{demand.marksug}}</td>
-                    <td>{{demand.marks12}}</td>
-                    <td>{{demand.marks10}}</td>
-                    <td>{{demand.numberofpositions}}</td>
-                    <td>{{demand.bonddetails}}</td>
-                    <td>{{demand.bondduration}}</td>
-                    <td>{{demand.compensation}}</td>
-                    <td>{{demand.location}}</td>
-                    <td>{{demand.constraintlocation}}</td>
+                    <td>{{req.id}}</td>
+                    <td>{{req.created}}</td>
+                    <td>{{req.name}}
+                    <td>{{req.jobTitle}}</td>
+                    <td>{{req.gender}}</td>
+                    <td>{{req.certification}}</td>
+                    <td>{{req.lastGradYear}}</td>
+                    <td>{{req.marksPG}}</td>
+                    <td>{{req.marksUG}}</td>
+                    <td>{{req.marks12}}</td>
+                    <td>{{req.marks10}}</td>
+                    <td>{{req.numberOfPositions}}</td>
+                    <td>{{req.bondDetails}}</td>
+                    <td>{{req.bondDuration}}</td>
+                    <td>{{req.compensation}}</td>
+                    <td>{{req.location}}</td>
+                    <td>{{req.constraintLocation}}</td>
                 </tr>
                 {% endfor %}
             </table>
-    </div>
-        {% if user.is_authenticated %}
-        <h2>Hello {{ user.username }}</h2>
-        {% endif %}
-</div>
+    
 {% endblock %}

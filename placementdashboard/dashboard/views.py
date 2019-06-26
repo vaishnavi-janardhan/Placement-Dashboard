@@ -13,9 +13,9 @@ from django.utils.encoding import smart_str
 def index(request):
     requirements = Requirements.objects.raw(
         'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, compensation, d.location, constraintLocation from pma_demand as d INNER JOIN pma_partner as p on partner_fk = p.id;'         
-    )
-    
-    print (requirements)
+    ) 
+    for req in requirements:
+        print(req.id)
     return render(request, 'dashboard/index.html', {'requirements': requirements})
 
 def getfile(request):
@@ -26,6 +26,7 @@ def getfile(request):
     writer.writerow([
 		smart_str(u"Sl No"),
 		smart_str(u"Date of requirement"),
+        smart_str(u"Partner"),
 		smart_str(u"Job Title"),
 		smart_str(u"Gender"),
         smart_str(u"Certification required"),
@@ -41,25 +42,28 @@ def getfile(request):
         smart_str(u"Work location"),
         smart_str(u"Constraint location"),
 	])
-    demands = PmaDemand.objects.all()
-    for demand in demands:
+    requirements = Requirements.objects.raw(
+        'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, compensation, d.location, constraintLocation from pma_demand as d INNER JOIN pma_partner as p on partner_fk = p.id;'         
+    ) 
+    for req in requirements:
         writer.writerow([
-		    smart_str(demand.id),
-		    smart_str(demand.enddate),
-		    smart_str(demand.jobtitle),
-            smart_str(demand.gender),
-            smart_str(demand.certification),
-            smart_str(demand.lastgradyear),
-            smart_str(demand.markspg),
-            smart_str(demand.marksug),
-            smart_str(demand.marks12),
-            smart_str(demand.marks10),
-            smart_str(demand.numberofpositions),
-            smart_str(demand.bonddetails),
-            smart_str(demand.bondduration),
-            smart_str(demand.compensation),
-            smart_str(demand.location),
-            smart_str(demand.constraintlocation),
+		    smart_str(req.id),
+		    smart_str(req.created),
+            smart_str(req.name),
+		    smart_str(req.jobTitle),
+            smart_str(req.gender),
+            smart_str(req.certification),
+            smart_str(req.lastGradYear),
+            smart_str(req.marksPG),
+            smart_str(req.marksUG),
+            smart_str(req.marks12),
+            smart_str(req.marks10),
+            smart_str(req.numberOfPositions),
+            smart_str(req.bondDetails),
+            smart_str(req.bondDuration),
+            smart_str(req.compensation),
+            smart_str(req.location),
+            smart_str(req.constraintLocation),
 	    ])
     return response    
 
