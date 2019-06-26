@@ -23,6 +23,8 @@ def index(request):
     return render(request, 'dashboard/index.html', {'requirements': requirements})   
 
 def getfile(request):
+    startDate = request.POST.get('startDate')
+    endDate = request.POST.get('endDate')
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="requirements.csv"'
     writer = csv.writer(response, csv.excel)
