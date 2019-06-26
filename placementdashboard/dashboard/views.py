@@ -20,7 +20,10 @@ def index(request):
             'INNER JOIN pma_partner as p on partner_fk = p.id WHERE created BETWEEN \'' +
             startdate + ' \' AND \'' + enddate + '\';'      
     )    
-    return render(request, 'dashboard/index.html', {'requirements': requirements})   
+    return render(request, 'dashboard/index.html', {'requirements': requirements}) 
+
+def requirements(request):
+    return render(request, 'dashboard/requirements.html')
 
 def getfile(request):
     startdate = request.POST.get('startDate')
