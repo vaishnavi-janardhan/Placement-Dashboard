@@ -15,7 +15,39 @@
   </head>
 </head>
 <body>
-        <nav class="navbar navbar-default navbar-static-top">
+
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://www.talentsprint.com/misc/TS-Website/images/logo.png" id="icon" alt="Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" action="{% url 'dashboard:user_login' %}">
+                {% csrf_token %}
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Password -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+  {% block body_block %}
+  {% endblock %}
+  </div>
+
+        {% comment %} <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <ul class="nav navbar-nav">
                         {# Django Home Link / Admin Link / Register Link#}
@@ -40,6 +72,6 @@
   <div class="container">
   {% block body_block %}
   {% endblock %}
-  </div>
+  </div> {% endcomment %}
 </body>
 </html>
