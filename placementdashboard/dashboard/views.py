@@ -25,6 +25,12 @@ def index(request):
 def requirements(request):
     return render(request, 'dashboard/requirements.html')
 
+def selfPlaced(request):
+    return render(request, 'dashboard/requirements.html')
+
+def activeDrives(request):
+    return render(request, 'dashboard/requirements.html')
+
 def getfile(request):
     startdate = request.POST.get('startDate')
     enddate = request.POST.get('endDate')
