@@ -2,22 +2,24 @@
 {% block body_block %}
 {% if user.is_authenticated %}
 <div class = "container">
+    
     <div class = "jumbotron jumbotron-fluid">
-        <h1> Welcome to the Placements Dashboard! </h1>
+        <h1> Welcome to the Placements Dashboard </h1>
     </div>
-    </div>
+    <div class = "wrapper">
         
-        <h2>Hello {{ user.username }}</h2>
-    </div>
+        <h2 id = "welcome">Hello {{ user.username }}</h2>
 
+    
     <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Download </a>
-    <div class="jumbotron jumbotron-fluid">
+    </div>
+    <!--<div class="jumbotron jumbotron-fluid">
             <table class="table">
                 <tr>
                     <th>Sl No</th>
                     <th>Date of requirement</th>
                     <th>Partner</th>
-                    <!--<th>Skills</th>-->
+                    <th>Skills</th>
                     <th>Job Title</th>
                     <th>Gender</th>
                     <th>Certification required</th>
@@ -54,7 +56,7 @@
                     <td>{{req.constraintLocation}}</td>
                 </tr>
                 {% endfor %}
-            </table>
+            </table> -->
             {% else %}
             <meta http-equiv="Refresh" content="0; url= login">
             {% endif %}
