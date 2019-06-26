@@ -21,8 +21,6 @@
     color: #cccccc;
   }
   
-  
-  
   /* STRUCTURE */
   
   .wrapper {
@@ -140,7 +138,11 @@
   }
   
   
-  
+
+  /* .wrapper {
+    text-align: center;
+  }
+   */
   /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */

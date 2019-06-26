@@ -33,12 +33,10 @@
                             </a>  
                           </div>
                         </li>
-                        <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
 
                         {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="navbar-link" href="{% url 'dashboard:user_login' %}">Login</a></li>
+          
           {% endif %}
 
         </ul>
