@@ -11,8 +11,14 @@ import csv
 from django.utils.encoding import smart_str
 
 def index(request):
+    startdate = '2018/11/01'
+    enddate = '2018/12/31'
     requirements = Requirements.objects.raw(
-        'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, compensation, d.location, constraintLocation from pma_demand as d INNER JOIN pma_partner as p on partner_fk = p.id;'         
+        'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, '
+        'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
+        'compensation, d.location, constraintLocation FROM pma_demand AS d '
+        'INNER JOIN pma_partner AS p on partner_fk = p.id WHERE created BETWEEN \'' + startdate
+        + '\' AND \'' + enddate + '\';'         
     ) 
     for req in requirements:
         print(req.id)
@@ -92,4 +98,4 @@ def user_login(request):
             print("They used username : {} and password : {}".format(username, password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'dashboard/base.html', {})       
+        return render(request, 'dashboard/login.html', {})       
