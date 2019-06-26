@@ -11,43 +11,14 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel = "stylesheet" type = "text/css" href = " {% static 'css/style.css' %}">
-    <link rel = "stylesheet" type = "text/css" href = " {% static 'css/styletable.css' %}">
   </head>
 </head>
 <body>
 
-  <div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="https://www.talentsprint.com/misc/TS-Website/images/logo.png" id="icon" alt="Icon" />
-    </div>
-
-    <!-- Login Form -->
-    <form method="post" action="{% url 'dashboard:user_login' %}">
-                {% csrf_token %}
-      <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
-
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
-
-    <!-- Remind Password -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-
-    </div>
-  </div>
-
   <div class="container">
-  {% block body_block %}
-  {% endblock %}
   </div>
 
-        {% comment %} <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <ul class="nav navbar-nav">
                         {# Django Home Link / Admin Link / Register Link#}
@@ -69,9 +40,11 @@
         </ul>
     </div>
   </nav>
-  <div class="container">
-  {% block body_block %}
-  {% endblock %}
-  </div> {% endcomment %}
+
+  <div class = "container">
+    {% block body_block %}
+    {% endblock %}
+  
+  </div>
 </body>
 </html>
