@@ -32,6 +32,7 @@ def getfile(request):
 		smart_str(u"Date of requirement"),
         smart_str(u"Partner"),
 		smart_str(u"Job Title"),
+        smart_str(u"Skills"),
 		smart_str(u"Gender"),
         smart_str(u"Certification required"),
         smart_str(u"Year of last graduation"),
@@ -49,11 +50,11 @@ def getfile(request):
     startdate = '2018/11/01'
     enddate = '2018/12/31'
     requirements = Requirements.objects.raw(
-            'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, '
+            'SELECT d.id, created, p.name, jobTitle, skills, gender, certification, lastGradYear, '
             'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
             'compensation, d.location, constraintLocation from pma_demand as d '
-            'INNER JOIN pma_partner as p on partner_fk = p.id WHERE created BETWEEN \'' +
-            startdate + ' \' AND \'' + enddate + '\';'      
+            'INNER JOIN pma_partner as p on partner_fk = p.id INNER JOIN pma_demand_skills on demand_id = d.id '
+            'WHERE created BETWEEN \'' + startdate + ' \' AND \'' + enddate + '\';'      
     )
     for req in requirements:
         writer.writerow([
@@ -61,6 +62,7 @@ def getfile(request):
 		    smart_str(req.created),
             smart_str(req.name),
 		    smart_str(req.jobTitle),
+            smart_str(req.skills),
             smart_str(req.gender),
             smart_str(req.certification),
             smart_str(req.lastGradYear),
