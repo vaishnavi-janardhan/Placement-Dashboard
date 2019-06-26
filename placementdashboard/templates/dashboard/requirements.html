@@ -1,19 +1,24 @@
 {% extends 'dashboard/base.html' %}
 {% block body_block %}
-
+{ % if user.is_authenticated%}
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
   </div>
 </div>
 
-  <form method="post" >
+  <form method="post" action="{% url 'dashboard: getfile' %}">
                 {% csrf_token %}
       <input type="date" id="startDate" class="fadeIn second" name="startDate" placeholder="Enter start date" required>
       <input type="date" id="endDate" class="fadeIn third" name="endDate" placeholder="Enter end date" required>
+{% comment %} 
+      <input type="submit" class="fadeIn fourth" value="Generate report"> {% endcomment %}
 
-      <input type="submit" class="fadeIn fourth" value="Generate report">
 
-    <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a>
 
+    <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Download CSV </a>
+
+    {% else %}
+    <meta http-equiv="Refresh" content="0; url= login">
+    {% endif %}
 {% endblock %} 

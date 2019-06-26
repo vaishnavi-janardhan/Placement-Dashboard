@@ -1,0 +1,8 @@
+{% extends 'dashboard/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+{% else %}
+    <meta http-equiv="Refresh" content="0; url= login">
+{% endif %}
+{% endblock %} 
