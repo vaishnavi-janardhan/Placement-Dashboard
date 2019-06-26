@@ -23,6 +23,8 @@ def index(request):
     return render(request, 'dashboard/index.html', {'requirements': requirements})   
 
 def getfile(request):
+    startdate = request.POST.get('startDate')
+    enddate = request.POST.get('endDate')
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="requirements.csv"'
     writer = csv.writer(response, csv.excel)
@@ -47,8 +49,6 @@ def getfile(request):
         smart_str(u"Work location"),
         smart_str(u"Constraint location"),
 	])
-    startdate = '2018/11/01'
-    enddate = '2018/12/31'
     requirements = Requirements.objects.raw(
             'SELECT d.id, created, p.name, jobTitle, skills, gender, certification, lastGradYear, '
             'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
