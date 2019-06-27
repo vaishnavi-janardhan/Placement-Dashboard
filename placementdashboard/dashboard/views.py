@@ -18,24 +18,19 @@ def requirements(request):
     return render(request, 'dashboard/requirements.html')
 
 def selfPlaced(request):
-    selfPlacedStudents = SelfPlaced.objects.raw(
-        'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
-        'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
-        'AND selfPlacedWith NOT LIKE ""'
-        'AND batch = "H16J04";'
-    )
+    selfPlacedStudents = None
     return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
 
 def getSelfPlaced(request):
-    batchID = request.POST.get('batchID')
+    batchID = request.POST.get('batch ID')
     print(batchID)
     selfPlacedStudents = SelfPlaced.objects.raw(
         'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
         'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
         'AND selfPlacedWith NOT LIKE \"\"'
-        ' AND batch = \"' + batchID + '\";'
+        ' AND batch = \'' + batchID + '\';'
     )
-    return selfPlacedStudents
+    return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
 
 def activeDrives(request):
     return render(request, 'dashboard/activeDrives.html')

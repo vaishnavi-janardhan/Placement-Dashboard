@@ -6,7 +6,8 @@
 
       <p align = center>Enter Batch ID: </p>
       <div class="wrapper">
-        <input style = "width : 30vw" type="text" id="batchID" class="batch fadeIn second" name="batchID" placeholder="Batch ID" required>
+        <input style = "width : 30vw" type="text" id="batchID" class="batch second"
+        name="batch ID" placeholder="Batch ID" required>
       </div>
       <div class="wrapper">
         <input type="submit" class="fadeIn fourth" value="Show Table">
@@ -14,7 +15,7 @@
 
     <!-- <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a> -->
   </form>
-
+{% if selfPlacedStudents is not None %}
 <div class="jumbotron jumbotron-fluid">
      <table class="table">
                 <tr>
@@ -45,6 +46,7 @@
                 {% endfor %}
             </table>
             </div>
+            {% endif %}
 {% else %}
     <meta http-equiv="Refresh" content="0; url= login">
 {% endif %}
