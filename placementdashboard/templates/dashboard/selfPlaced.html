@@ -1,7 +1,45 @@
 {% extends 'dashboard/base.html' %}
 {% block body_block %}
 {% if user.is_authenticated %}
-
+<form method="post" action="{% url 'dashboard:get_self_placed' %}" download>
+  {% csrf_token %}
+      <p>Enter Batch ID: </p> <input type="text" id="batchID" class="fadeIn second" name="batch ID" placeholder="Batch ID" required>
+      <br>
+      <div class="wrapper">
+      <input type="submit" class="fadeIn fourth" value="Show Table">
+      </div>
+    <!-- <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a> -->
+  </form>
+<div class="jumbotron jumbotron-fluid">
+     <table class="table">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Batch ID</th>
+                    <th>Trainee ID</th>
+                    <th>Skills</th>
+                    <th>Company Name</th>
+                    <th>Email ID</th>
+                    <th>Mobile No</th>
+                    <th>Year of Graduation</th>
+                    <th>College Name</th>
+                </tr>
+                {% for student in selfPlacedStudents %}
+                <tr>
+                    <td>{{student.firstName}}</td>
+                    <td>{{student.lastName}}</td>
+                    <td>{{student.batch}}
+                    <td>{{student.id}}</td>
+                    <td>{{student.skill}}</td>
+                    <td>{{student.selfPlacedWith}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.mobile}}</td>
+                    <td>{{student.lastGradYear}}</td>
+                    <td>{{student.collegeName}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
 {% else %}
     <meta http-equiv="Refresh" content="0; url= login">
 {% endif %}

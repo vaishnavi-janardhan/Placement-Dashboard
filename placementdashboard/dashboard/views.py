@@ -7,29 +7,37 @@ from dashboard.forms import UserForm, UserProfileInfoForm
 from dashboard.models import Requirements
 from dashboard.models import PmaDemand
 from dashboard.models import PmaPartner
+from dashboard.models import SelfPlaced
 import csv
 from django.utils.encoding import smart_str
 
-def index(request):
-    startdate = '2018/11/01'
-    enddate = '2018/12/31'
-    requirements = Requirements.objects.raw(
-            'SELECT d.id, created, p.name, jobTitle, gender, certification, lastGradYear, '
-            'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
-            'compensation, d.location, constraintLocation from pma_demand as d '
-            'INNER JOIN pma_partner as p on partner_fk = p.id WHERE created BETWEEN \'' +
-            startdate + ' \' AND \'' + enddate + '\';'      
-    )    
-    return render(request, 'dashboard/index.html', {'requirements': requirements}) 
+def index(request): 
+    return render(request, 'dashboard/index.html') 
 
 def requirements(request):
     return render(request, 'dashboard/requirements.html')
 
 def selfPlaced(request):
-    return render(request, 'dashboard/requirements.html')
+    selfPlacedStudents = SelfPlaced.objects.raw(
+        'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
+        'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
+        'AND selfPlacedWith NOT LIKE ""'
+        'AND batch = "H16J04";'    
+    )
+    return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
+
+def getSelfPlaced(request):
+    bactchID = request.POST.get('batchID')
+    selfPlacedStudents = SelfPlaced.objects.raw(
+        'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
+        'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
+        'AND selfPlacedWith NOT LIKE ""'
+        'AND batch = \"' + bactchID + '\";'    
+    )
+    return selfPlacedStudents    
 
 def activeDrives(request):
-    return render(request, 'dashboard/requirements.html')
+    return render(request, 'dashboard/activeDrives.html')
 
 def getfile(request):
     startdate = request.POST.get('startDate')
@@ -86,7 +94,7 @@ def getfile(request):
             smart_str(req.location),
             smart_str(req.constraintLocation),
 	    ])
-    return response    
+    return response
 
 @login_required
 def special(request):

@@ -9,7 +9,7 @@
 
 <div class="wrapper">
 <form method="post" action="{% url 'dashboard:download_csv' %}" download>
-                {% csrf_token %}
+  {% csrf_token %}
       <p>Enter start date: </p> <input class = "date" type="date" id="startDate" class="fadeIn second" name="startDate" placeholder="Enter start date" required>
       <br>
       <p>Enter end date: </p>
@@ -24,7 +24,7 @@
 
 
     {% else %}
-    <meta http-equiv="Refresh" content="0; url= login">
+      <meta http-equiv="Refresh" content="0; url = ">
     {% endif %}
 
 {% endblock %} 

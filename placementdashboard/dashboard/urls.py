@@ -7,5 +7,6 @@ app_name = 'Placement Dashboard'
 urlpatterns = [
     path('', views.user_login, name='user_login'),
     # url(r'^user_login/$',views.user_login,name='user_login'),
-    url('csv', views.getfile, name = 'download_csv')
+    url('csv', views.getfile, name = 'download_csv'),
+    url('getSelfPlaced', views.getSelfPlaced, name = 'get_self_placed')
 ]

@@ -152,8 +152,19 @@ class Requirements(models.Model):
     bondDuration = models.CharField(max_length=255)  
     compensation = models.CharField(max_length=255)
     workLocation = models.CharField(max_length=255)
-    constraintLocation = models.CharField(max_length=255)        
+    constraintLocation = models.CharField(max_length=255)
 
+class SelfPlaced(models.Model):
+    firstname = models.CharField(max_length=255)                
+    lastname = models.CharField(max_length=255)
+    batchid = models.CharField(max_length=255)
+    traineeid = models.IntegerField()
+    skills = models.CharField(max_length=255)
+    companyname = models.CharField(max_length=255)
+    emailid = models.CharField(max_length=255)
+    mobileno = models.BigIntegerField()
+    yearofgrad = models.IntegerField()
+    collegename = models.CharField(max_length=255)    
 
 class PmaBroadcast(models.Model):
     id = models.BigAutoField(primary_key=True)

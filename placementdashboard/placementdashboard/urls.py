@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^dashboard/',include('dashboard.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^requirements/$', views.requirements, name='requirements'),
-    url(r'^activedrives/$', views.activeDrives, name='activeDrives'),
-    url(r'^selfplaced/$', views.selfPlaced, name= 'selfPlaced'),
+    url(r'^activedrives$', views.activeDrives, name='activeDrives'),
+    url(r'^selfplaced$', views.selfPlaced, name= 'selfPlaced'),
     url(r'^', include('dashboard.urls', namespace="dashboard"))
 ]
