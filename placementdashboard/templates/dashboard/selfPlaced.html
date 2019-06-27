@@ -1,17 +1,16 @@
 {% extends 'dashboard/base.html' %}
 {% block body_block %}
 {% if user.is_authenticated %}
-<form method="post" action="{% url 'dashboard:get_self_placed' %}" download>
+<form method="post" action="{% url 'dashboard:getSelfPlaced' %}">
   {% csrf_token %}
-  
-      <p align = center>Enter Batch ID: </p> 
+
+      <p align = center>Enter Batch ID: </p>
       <div class="wrapper">
-      <input style = "width : 30vw"
-      class = "batch" type="text" id="batchID" class="fadeIn second" name="batchID" placeholder="Batch ID" required>
+        <input style = "width : 30vw" type="text" id="batchID" class="batch fadeIn second" name="batchID" placeholder="Batch ID" required>
       </div>
-            <div class="wrapper">
-      <input type="submit" class="fadeIn fourth" value="Show Table">
-              </div>
+      <div class="wrapper">
+        <input type="submit" class="fadeIn fourth" value="Show Table">
+      </div>
 
     <!-- <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a> -->
   </form>
@@ -49,4 +48,4 @@
 {% else %}
     <meta http-equiv="Refresh" content="0; url= login">
 {% endif %}
-{% endblock %} 
+{% endblock %}
