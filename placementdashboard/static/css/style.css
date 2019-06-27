@@ -5,6 +5,7 @@
   }
   
   a {
+    font-size: 50%;
     color: #92badd;
     display:inline-block;
     text-decoration: none;
@@ -96,10 +97,12 @@
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, .button:hover  {
+    text-decoration: none;
     background-color: #39ace7;
   }
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active, .button:active  {
+    text-decoration: none;
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
