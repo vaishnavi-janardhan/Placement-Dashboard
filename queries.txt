@@ -1,0 +1,7 @@
+Self-Placed:
+SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL AND batch = "P19A07E";
+ select name,max(roundNumber) from pma_drive inner join pma_selection_round on pma_drive.id = drive_fk group by name;
+
+Active-drives:
+ select name, max(roundNumber) from pma_drive inner join pma_selection_round on pma_drive.id = drive_fk group by name;
+select max(roundNumber), id
