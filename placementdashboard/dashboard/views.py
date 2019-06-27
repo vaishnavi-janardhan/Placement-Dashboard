@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from dashboard.forms import UserForm, UserProfileInfoForm 
+from dashboard.forms import UserForm, UserProfileInfoForm
 from dashboard.models import Requirements
 from dashboard.models import PmaDemand
 from dashboard.models import PmaPartner
@@ -11,8 +11,8 @@ from dashboard.models import SelfPlaced
 import csv
 from django.utils.encoding import smart_str
 
-def index(request): 
-    return render(request, 'dashboard/index.html') 
+def index(request):
+    return render(request, 'dashboard/index.html')
 
 def requirements(request):
     return render(request, 'dashboard/requirements.html')
@@ -22,19 +22,20 @@ def selfPlaced(request):
         'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
         'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
         'AND selfPlacedWith NOT LIKE ""'
-        'AND batch = "H16J04";'    
+        'AND batch = "H16J04";'
     )
     return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
 
 def getSelfPlaced(request):
-    bactchID = request.POST.get('batchID')
+    batchID = request.POST.get('batchID')
+    print(batchID)
     selfPlacedStudents = SelfPlaced.objects.raw(
         'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
         'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
-        'AND selfPlacedWith NOT LIKE ""'
-        'AND batch = \"' + bactchID + '\";'    
+        'AND selfPlacedWith NOT LIKE \"\"'
+        ' AND batch = \"' + batchID + '\";'
     )
-    return selfPlacedStudents    
+    return selfPlacedStudents
 
 def activeDrives(request):
     return render(request, 'dashboard/activeDrives.html')
@@ -71,7 +72,7 @@ def getfile(request):
             'marksPG, marksUG, marks10, marks12, numberOfPositions, bondDetails, bondDuration, '
             'compensation, d.location, constraintLocation from pma_demand as d '
             'INNER JOIN pma_partner as p on partner_fk = p.id INNER JOIN pma_demand_skills on demand_id = d.id '
-            'WHERE created BETWEEN \'' + startdate + ' \' AND \'' + enddate + '\';'      
+            'WHERE created BETWEEN \'' + startdate + ' \' AND \'' + enddate + '\';'
     )
     for req in requirements:
         writer.writerow([
@@ -113,7 +114,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index')) 
+                return HttpResponseRedirect(reverse('index'))
             else:
                 return HttpResponseRedirect("Your account was inactive")
         else:
@@ -121,4 +122,4 @@ def user_login(request):
             print("They used username : {} and password : {}".format(username, password))
             return HttpResponse("Invalid login details given")
     else:
-        return render(request, 'dashboard/login.html', {})       
+        return render(request, 'dashboard/login.html', {})
