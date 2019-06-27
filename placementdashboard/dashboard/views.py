@@ -8,6 +8,7 @@ from dashboard.models import Requirements
 from dashboard.models import PmaDemand
 from dashboard.models import PmaPartner
 from dashboard.models import SelfPlaced
+from dashboard.models import ActiveDrives
 import csv
 from django.utils.encoding import smart_str
 
@@ -33,7 +34,14 @@ def getSelfPlaced(request):
     return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
 
 def activeDrives(request):
-    return render(request, 'dashboard/activeDrives.html')
+    activeDrives = ActiveDrives.objects.raw(
+        'SELECT drive_fk as id, @a := @a + 1 slno, name, date FROM pma_selection_round '
+        'INNER JOIN pma_drive ON drive_fk = pma_drive.id, (select @a := 0) '
+        'as a where roundNumber = 0;'
+    )
+    for drive in activeDrives:
+        print(drive.slno)
+    return render(request, 'dashboard/activeDrives.html', {'activeDrives' : activeDrives})
 
 def getfile(request):
     startdate = request.POST.get('startDate')

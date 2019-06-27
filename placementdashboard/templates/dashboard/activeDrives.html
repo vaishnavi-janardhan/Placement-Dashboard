@@ -4,6 +4,22 @@
 <div class="wrapper fadeInDown">
   ACTIVE DRIVES REPORT
 </div>
+<div class="jumbotron jumbotron-fluid">
+     <table class="table">
+                <tr>
+                    <th>Sl No</th>
+                    <th>Partner Name</th>
+                    <th>Drive Start Date</th>
+                </tr>
+                {% for drive in activeDrives %}
+                <tr>
+                    <td>{{drive.slno | floatformat}}</td>
+                    <td>{{drive.name}}</td>
+                    <td>{{drive.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
 {% else %}
     <meta http-equiv="Refresh" content="0; url= login">
 {% endif %}

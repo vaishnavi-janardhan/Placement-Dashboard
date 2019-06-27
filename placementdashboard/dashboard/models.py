@@ -166,6 +166,12 @@ class SelfPlaced(models.Model):
     yearofgrad = models.IntegerField()
     collegename = models.CharField(max_length=255)    
 
+class ActiveDrives(models.Model):
+    id = models.IntegerField(primary_key=True)
+    slno = models.IntegerField()
+    name = models.CharField(max_length=255)
+    date = models.DateField()
+
 class PmaBroadcast(models.Model):
     id = models.BigAutoField(primary_key=True)
     applied = models.TextField(blank=True, null=True)  # This field type is a guess.
