@@ -27,12 +27,12 @@ def selfPlaced(request):
     return render(request, 'dashboard/selfPlaced.html', {'selfPlacedStudents' : selfPlacedStudents})
 
 def getSelfPlaced(request):
-    bactchID = request.POST.get('batchID')
+    batchID = request.POST.get('batchID')
     selfPlacedStudents = SelfPlaced.objects.raw(
         'SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, '
         'lastGradYear, collegeName from pma_trainee where selfPlacedWith IS NOT NULL '
         'AND selfPlacedWith NOT LIKE ""'
-        'AND batch = \"' + bactchID + '\";'    
+        'AND batch = \"' + batchID + '\";'    
     )
     return selfPlacedStudents    
 
