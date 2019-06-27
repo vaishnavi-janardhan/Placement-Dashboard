@@ -3,13 +3,19 @@
 {% if user.is_authenticated %}
 <form method="post" action="{% url 'dashboard:get_self_placed' %}" download>
   {% csrf_token %}
-      <p>Enter Batch ID: </p> <input type="text" id="batchID" class="fadeIn second" name="batch ID" placeholder="Batch ID" required>
-      <br>
+  
+      <p align = center>Enter Batch ID: </p> 
       <div class="wrapper">
-      <input type="submit" class="fadeIn fourth" value="Show Table">
+      <input style = "width : 30vw"
+      class = "batch" type="text" id="batchID" class="fadeIn second" name="batch ID" placeholder="Batch ID" required>
       </div>
+            <div class="wrapper">
+      <input type="submit" class="fadeIn fourth" value="Show Table">
+              </div>
+
     <!-- <a class = "button" href="{% url 'dashboard:download_csv' %}" download> Generate CSV </a> -->
   </form>
+
 <div class="jumbotron jumbotron-fluid">
      <table class="table">
                 <tr>
