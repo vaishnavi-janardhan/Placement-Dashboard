@@ -1,110 +1,62 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Beamer Presentation
-% LaTeX Template
-% Version 1.0 (10/11/12)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%    PACKAGES AND THEMES
-%----------------------------------------------------------------------------------------
-
-\documentclass{beamer}
+\documentclass[xcolor={dvipsnames}]{beamer}
 
 \mode<presentation> {
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[english]{babel}
+    \usepackage{csquotes}
 
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
+    \bibliographystyle{plain}
 
-%\usetheme{default}
-\usetheme{AnnArbor}
-%\usetheme{Antibes}
-%\usetheme{Bergen}
-%\usetheme{Berkeley}
-%\usetheme{Berlin}
-%\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Darmstadt}
-%\usetheme{Dresden}
-%\usetheme{Frankfurt}
-%\usetheme{Goettingen}
-%\usetheme{Hannover}
-%\usetheme{Ilmenau}
-%\usetheme{JuanLesPins}
-%\usetheme{Luebeck}
-%\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
-%\usetheme{Warsaw}
+    \usetheme{Madrid}
+    \usecolortheme{ipbutfpr}
 
-% As well as themes, the Beamer class has a number of color themes
-% for any slide theme. Uncomment each of these in turn to see how it
-% changes the colors of your current slide theme.
+    \setbeamertemplate{caption}[numbered]
+    \setbeamertemplate{bibliography item}{\insertbiblabel}
+    \setbeamertemplate{frametitle continuation}{\gdef\beamer@frametitle{}}
 
-%\usecolortheme{albatross}
-%\usecolortheme{beaver}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-%\usecolortheme{dolphin}
-%\usecolortheme{dove}
-%\usecolortheme{fly}
-%\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
-%\usecolortheme{seagull}
-%\usecolortheme{seahorse}
-%\usecolortheme{whale}
-%\usecolortheme{wolverine}
+    % \setbeamertemplate{footline}{
+    %     \leavevmode%
+    %     \hbox{%
+    %         \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    %             \usebeamerfont{author in head/foot}\insertshortauthor
+    %         \end{beamercolorbox}%
+    %         \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    %             \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{6em}
+    %             \insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+    %         \end{beamercolorbox}
+    %     }%
+    %     \vskip0pt%
+    % }
 
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+    \setbeamertemplate{navigation symbols}{}
 }
 
-\usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage[language=brazil, style=numeric, sorting=none]{biblatex}
+\addbibresource{main.bib}
+\makeatletter
 
-%----------------------------------------------------------------------------------------
-%    TITLE PAGE
-%----------------------------------------------------------------------------------------
+\makeatother
 
-\title[Placement Dashboard]{PLACEMENT DASHBOARD } % The short title appears at the bottom of every slide, the full title is only on the title page  
+\title[Placement Dashboard]{PLACEMENT DASHBOARD}
 
-\author[Bhumika, Vaishnavi]{Bhumika Saxena and Vaishnavi Janardhan} % Your name
-\institute {TalentSprint WE}
-{
-  % Your institution for the title page
-\medskip
-% \textit{bhumika056btcse17@igdtuw.ac.in} % Your email address
-}
-\date{\today} % Date, can be changed to a custom date
+\author[Bhumika, Vaishnavi]{Bhumika Saxena and Vaishnavi Janardhan}
+
+\institute{TalentSprint WE}
+
+\date{\today}
 
 \begin{document}
 
 \begin{frame}[plain]
 \begin{center}
-\includegraphics[width = 10cm]{8.png}
+\includegraphics[width = 10cm]{images/8.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[plain]
 \begin{center}
-\includegraphics[width = 10cm]{9.png}
+\includegraphics[width = 10cm]{images/9.png}
 \end{center}
 \end{frame}
 
@@ -167,14 +119,14 @@
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{1.png}
+\includegraphics[width = 10cm]{images/1.png}
 \end{center}
 \end{frame}
 
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{2.png}
+\includegraphics[width = 10cm]{images/2.png}
 \end{center}
 \end{frame}
 
@@ -182,28 +134,28 @@
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{3.png}
+\includegraphics[width = 10cm]{images/3.png}
 \end{center}
 \end{frame}
 
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{4.png}
+\includegraphics[width = 10cm]{images/4.png}
 \end{center}
 \end{frame}
 
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{5.png}
+\includegraphics[width = 10cm]{images/5.png}
 \end{center}
 \end{frame}
 
 \begin{frame}
 \frametitle{ ~ Current progress}
 \begin{center}
-\includegraphics[width = 10cm]{6.png}
+\includegraphics[width = 10cm]{images/6.png}
 \end{center}
 \end{frame}
 
@@ -211,7 +163,7 @@
 \begin{frame}
 \frametitle{ ~ Aim for today}
 \begin{center}
-\includegraphics[width = 10cm]{7.png}
+\includegraphics[width = 10cm]{images/7.png}
 \end{center}
 \end{frame}
 
