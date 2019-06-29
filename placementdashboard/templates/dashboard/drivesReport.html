@@ -1,0 +1,54 @@
+{% extends 'dashboard/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+<div class="jumbotron jumbotron-fluid">
+        <h1 align = "center" style = "font-size : 25pt"> DRIVES REPORT </h1>
+</div>
+
+<div class="wrapper">
+<form method="post" action="{% url 'dashboard:getDrivesReport' %}" download>
+  {% csrf_token %}
+      <p>Enter start date: </p> <input class = "date" type="date" id="startDate" class="fadeIn second" name="startDate" placeholder="Enter start date" required>
+      <br>
+      <p>Enter end date: </p>
+      <input class="date" type="date" id="endDate" class="fadeIn third" name="endDate" placeholder="Enter end date" required>
+      <br>
+      <div class="wrapper">
+      <input type="submit" class="fadeIn fourth" value="Show table">
+      </div>
+  </form>
+  </div>
+    {% if drives is not None %}
+<div class="jumbotron jumbotron-fluid">
+     <table class="table">
+                <tr>
+                    <th>Date</th>
+                    <th>Drive Name</th>
+                    <th>Round Number</th>
+                    <th>Skills</th>
+                    <th>No. of Positions</th>
+                    <th>Compensation</th>
+                    <th>Round Name</th>
+                </tr>
+                {% for drive in drives %}
+                <tr>
+                    <td>{{drive.date}}</td>
+                    <td>{{drive.name}}</td>
+                    <td>{{drive.roundNumber}}
+                    <td>{{drive.skills}}</td>
+                    <td>{{drive.numberOfPositions}}</td>
+                    <td>{{drive.compensation}}</td>
+                    <td>{{drive.rounds}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
+            {% endif %}
+
+
+    {% else %}
+      <meta http-equiv="Refresh" content="0; url = ">
+    {% endif %}
+
+{% endblock %} 

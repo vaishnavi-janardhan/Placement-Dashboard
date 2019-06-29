@@ -1,62 +1,37 @@
 {% extends "dashboard/base.html" %}
+{% load static %}
+{% block headcontent %}
+    <style>
+    #home-nav-item {
+        display : none;
+    }
+    </style>
+{% endblock %}
 {% block body_block %}
 {% if user.is_authenticated %}
+
 <div class="container">
 
     <div class="jumbotron jumbotron-fluid">
-        <h1> Welcome to the Placements Dashboard </h1>
+        <h1 align = "center" style = "font-size : 30pt"> PLACEMENT DASHBOARD </h1>
     </div>
 
 
-    <div class="wrapper">
+    <div align = "center">
+    <p style = "display : inline">
     <a class = "button" href="{% url 'requirements' %}" requirements><b> Job Offers </b> </a>
+    </p>
+    <p style = "display : inline">
     <a class = "button" href="{% url 'selfPlaced' %}" requirements> <b> Self - placed Trainees </b> </a>
+    </p>
+    <p style = "display : inline"> 
     <a class = "button" href="{% url 'activeDrives' %}" requirements> <b> Active Drives </b> </a>
+    </p>
+    <p style = "display : inline">
+    <a class = "button" href="{% url 'drivesReport' %}" requirements> <b> Drives Report </b> </a>
+    </p>
     </div>
-    <!--<div class="jumbotron jumbotron-fluid">
-            <table class="table">
-                <tr>
-                    <th>Sl No</th>
-                    <th>Date of requirement</th>
-                    <th>Partner</th>
-                    <th>Skills</th>
-                    <th>Job Title</th>
-                    <th>Gender</th>
-                    <th>Certification required</th>
-                    <th>Year of last graduation</th>
-                    <th>Marks PG</th>
-                    <th>Marks UG</th>
-                    <th>Marks 12th</th>
-                    <th>Marks 10th</th>
-                    <th>Number of positions</th>
-                    <th>Bond Details</th>
-                    <th>Bond Duration</th>
-                    <th>Compensation</th>
-                    <th>Location</th>
-                    <th>Constraint Location</th>
-                </tr>
-                {% for req in requirements %}
-                <tr>
-                    <td>{{req.id}}</td>
-                    <td>{{req.created}}</td>
-                    <td>{{req.name}}
-                    <td>{{req.jobTitle}}</td>
-                    <td>{{req.gender}}</td>
-                    <td>{{req.certification}}</td>
-                    <td>{{req.lastGradYear}}</td>
-                    <td>{{req.marksPG}}</td>
-                    <td>{{req.marksUG}}</td>
-                    <td>{{req.marks12}}</td>
-                    <td>{{req.marks10}}</td>
-                    <td>{{req.numberOfPositions}}</td>
-                    <td>{{req.bondDetails}}</td>
-                    <td>{{req.bondDuration}}</td>
-                    <td>{{req.compensation}}</td>
-                    <td>{{req.location}}</td>
-                    <td>{{req.constraintLocation}}</td>
-                </tr>
-                {% endfor %}
-            </table> -->
+    
     {% else %}
     <meta http-equiv="Refresh" content="0; url= login">
     {% endif %}

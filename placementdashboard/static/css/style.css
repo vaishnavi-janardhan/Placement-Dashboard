@@ -156,3 +156,14 @@
     font-size: 50pt;
     width : 100px;
   }
+
+  #justify{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+  }
+
+  .navbar-right {
+    float: right;
+    margin: 22px 0 0;
+  }

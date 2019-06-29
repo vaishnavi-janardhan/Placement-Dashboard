@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^requirements/$', views.requirements, name='requirements'),
     url(r'^activedrives$', views.activeDrives, name='activeDrives'),
     url(r'^selfplaced$', views.selfPlaced, name= 'selfPlaced'),
+    url(r'^drivesReport', views.drivesReport, name = 'drivesReport'),
     url(r'^', include('dashboard.urls', namespace="dashboard"))
 ]

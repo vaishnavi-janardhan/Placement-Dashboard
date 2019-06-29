@@ -3,12 +3,16 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django import forms
+from datetime import datetime
+
 from dashboard.forms import UserForm, UserProfileInfoForm
 from dashboard.models import Requirements
 from dashboard.models import PmaDemand
 from dashboard.models import PmaPartner
 from dashboard.models import SelfPlaced
 from dashboard.models import ActiveDrives
+from dashboard.models import DrivesReport
 import csv
 from django.utils.encoding import smart_str
 
@@ -42,6 +46,39 @@ def activeDrives(request):
     for drive in activeDrives:
         print(drive.slno)
     return render(request, 'dashboard/activeDrives.html', {'activeDrives' : activeDrives})
+
+def drivesReport(request):
+    drives = None
+    return render(request, 'dashboard/drivesReport.html', {'drives' : drives})
+
+def getDrivesReport(request):
+    startdate = request.POST.get('startDate')
+    enddate = request.POST.get('endDate')
+    print(startdate)
+    startdate = datetime.strptime(startdate, "%Y-%m-%d").strftime("%d-%m-%Y")
+    enddate = datetime.strptime(enddate , "%Y-%m-%d").strftime("%d-%m-%Y")
+    print('SELECT pma_selection_round.id, date, pma_drive.name, roundNumber, skills, numberOfPositions, '
+        'compensation,rounds FROM pma_selection_round INNER JOIN pma_drive '
+        'ON drive_fk = pma_drive.id INNER JOIN pma_demand_skills ON demand_fk '
+        '= demand_id INNER JOIN pma_demand ON demand_fk = pma_demand.id '
+        'INNER JOIN pma_drive_rounds on roundNumber = round_num AND '
+        'drive_id = drive_fk WHERE row(drive_fk,roundNumber) IN '
+        '(SELECT drive_fk,max(roundNumber) FROM pma_selection_round GROUP BY '
+        'drive_fk) AND date between \'' + startdate + '\' AND \'' + enddate + '\';')
+    drives = DrivesReport.objects.raw(
+        'SELECT pma_selection_round.id, date, pma_drive.name, roundNumber, skills, numberOfPositions, '
+        'compensation,rounds FROM pma_selection_round INNER JOIN pma_drive '
+        'ON drive_fk = pma_drive.id INNER JOIN pma_demand_skills ON demand_fk '
+        '= demand_id INNER JOIN pma_demand ON demand_fk = pma_demand.id '
+        'INNER JOIN pma_drive_rounds on roundNumber = round_num AND '
+        'drive_id = drive_fk WHERE row(drive_fk,roundNumber) IN '
+        '(SELECT drive_fk,max(roundNumber) FROM pma_selection_round GROUP BY '
+        'drive_fk) AND date between \'' + startdate + '\' AND \'' + enddate + '\';'
+    )
+
+    for drive in drives:
+        print(drive.rounds)
+    return render(request, 'dashboard/drivesReport.html', {'drives' : drives})
 
 def getfile(request):
     startdate = request.POST.get('startDate')

@@ -5,3 +5,6 @@ SELECT firstName, lastName, batch, id, skill, selfPlacedWith, email, mobile, las
 Active-drives:
  select name, max(roundNumber) from pma_drive inner join pma_selection_round on pma_drive.id = drive_fk group by name;
 select max(roundNumber), id
+
+Drives report:
+select date,pma_drive.name,roundNumber,skills,numberOfPositions,compensation,rounds from pma_selection_round inner join pma_drive on drive_fk = pma_drive.id  inner join pma_demand_skills on demand_fk = demand_id inner join pma_demand on demand_fk = pma_demand.id inner join pma_drive_rounds on roundNumber = round_num and drive_id = drive_fk where row(drive_fk,roundNumber) in (select drive_fk,max(roundNumber) from pma_selection_round group by drive_fk) and date between '01-01-2019' and '31-01-2019';

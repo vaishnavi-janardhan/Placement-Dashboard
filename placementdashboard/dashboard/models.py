@@ -172,6 +172,16 @@ class ActiveDrives(models.Model):
     name = models.CharField(max_length=255)
     date = models.DateField()
 
+class DrivesReport(models.Model):
+    id = models.IntegerField(primary_key = True)
+    date = models.DateField()
+    name = models.CharField(max_length = 255)
+    roundNumber = models.IntegerField()
+    skills = models.CharField(max_length = 255)
+    numberOfPositions = models.IntegerField()
+    compensation = models.IntegerField()
+    rounds = models.IntegerField()    
+
 class PmaBroadcast(models.Model):
     id = models.BigAutoField(primary_key=True)
     applied = models.TextField(blank=True, null=True)  # This field type is a guess.
