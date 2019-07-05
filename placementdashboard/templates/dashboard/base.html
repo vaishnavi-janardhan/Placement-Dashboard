@@ -31,16 +31,17 @@
               </a>
           </li>
           {% if user.is_authenticated %}
-          <li id = "home-nav-item"> <a style = "font-size : 15pt; margin : 25px 10px 25px 30px" href = "{% url 'index' %}"> Home </a> </li>
+          {% comment %} <li id = "home-nav-item"> <a style = "font-size : 15pt; margin : 25px 10px 25px 30px" href = "{% url 'index' %}"> Home </a> </li> {% endcomment %}
           
-          <li><a style = "font-size : 15pt; margin : 25px 0px" href="{% url 'logout' %}">Logout</a></li>
 
           {% endif %}
           </ul>
 
           {% if user.is_authenticated %}
           <ul  class = "nav navbar-nav navbar-right">
-          <li style = "float : right; margin: 17px 0 0 0; font-size : 15pt" id="welcome">{{ user.username }}</li>
+                    <li><a style = "float : right; font-size : 15pt; margin : 6px 20px" href="{% url 'logout' %}">Logout</a></li>
+                              <li style = "float : right; margin: 17px 0 0 0; font-size : 15pt" id="welcome">{{ user.username }}</li>
+
           {% endif %}
 
           </ul>
